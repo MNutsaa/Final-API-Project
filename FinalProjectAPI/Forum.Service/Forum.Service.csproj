@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Forum.Contracts\Forum.Contracts.csproj" />
+    <ProjectReference Include="..\Forum.Data\Forum.Data.csproj" />
+    <ProjectReference Include="..\Forum.Entities\Forum.Entities.csproj" />
+    <ProjectReference Include="..\Forum.Models\Forum.Models.csproj" />
+  </ItemGroup>
+
 </Project>

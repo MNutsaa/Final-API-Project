@@ -6,17 +6,22 @@ namespace Forum.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.AddDatabaseContext();
+            builder.ConfigureJwtOptions();
+            builder.AddIdentity();
+            builder.AddAuthentication();
+            builder.AddHttpContextAccessor();
+            builder.AddBackgroundJobs();
+            builder.AddScopedServices();
+            builder.AddControllers();
+            builder.AddEndpointsApiExplorer();
+            builder.AddSwagger();
+            builder.AddCors();
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -24,12 +29,10 @@ namespace Forum.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors(builder.Configuration.GetValue<string>("Cors:AllowOrigin"));
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }

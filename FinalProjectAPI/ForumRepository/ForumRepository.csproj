@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Forum.Contracts\Forum.Contracts.csproj" />
+    <ProjectReference Include="..\Forum.Data\Forum.Data.csproj" />
+    <ProjectReference Include="..\Forum.Service\Forum.Service.csproj" />
+  </ItemGroup>
+
 </Project>
